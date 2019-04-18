@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+    .links line {
+        stroke: #999;
+        stroke-opacity: 0.6;
+    }
+
+    .nodes circle {
+        stroke: black;
+        stroke-width: 0px;
+    }
+</style>
+<svg id="svg"></svg>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="node-pie.js"></script>
+<script>
+    var width = window.innerWidth
+    var height = window.innerHeight
+    var svg = document.getElementById('svg');
+    svg.setAttribute("width", width)
+    svg.setAttribute("height", height)
+
+    //create somewhere to put the force directed graph
+    var svg = d3.select("svg"),
+        width = +svg.attr("width"),
+        height = +svg.attr("height");
+
+    var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+    d3.json("http://localhost:8000/d3/politiciansNEW.json").then(function (graph) {
+        //set up the simulation and add forces
+        var simulation = d3.forceSimulation(graph.nodes)
+
+        var center_force = d3.forceCenter(width / 2, height / 2);
+
+        simulation
+            //.force("center_force", center_force)
+            .force("charge", d3.forceManyBody().strength(-2600))
+            //.force("center", d3.forceCenter(width / 2, height / 2))
+            .force("xCenter", d3.forceX().x(width / 2).strength(function (d) {
+                return (d.size * 25) + 0.4
+                //return 0.6
+            }))
+            .force("yCenter", d3.forceY().y(height / 2).strength(function (d) {
+                return (d.size * 25) + 0.7
+                //return 0.8
+            }))
+            .force('xLeft', d3.forceX()
+                .x(50).strength(function (d) {
+                    return (d.politicians[0].value / 100)
+                }))
+            .force('xRigth', d3.forceX()
+                .x(width-50).strength(function (d) {
+                    return (d.politicians[1].value / 100)
+                }))
+
+
+
+        //add tick instructions:
+        simulation.on("tick", tickActions);
+
+        //add encompassing group for the zoom
+        var g = svg.append("g")
+            .attr("class", "everything");
+
+        //draw circles for the nodes
+        var node = g.selectAll('.nodes')
+            .data(graph.nodes)
+            .enter()
+            .append('g')
+            .attr('class', 'nodes')
+        /*
+                node.append('circle')
+                    .attr("r", function (d) {
+                        return d.size * 1000
+                    })
+                    .attr("fill", function (d) { return color(d.group); })
+        */
+
+        function fromNameToColor(name) {
+            if (name == "matteorenzi") {
+                //return d3.rgb("blue")
+                return 1
+            }
+            else {
+                //return d3.rgb("yellow")
+                return 2
+            }
+        }
+
+        node.each(function (d) {
+            var percentage = []
+            d.politicians.forEach(element => {
+                //console.log(element, d.value)
+                percentage.push({ "politic": element["politic"], "percent": element["value"], "color": fromNameToColor((element["politic"])) })
+            });
+            console.log(percentage)
+            NodePieBuilder.drawNodePie(d3.select(this), percentage, {
+                parentNodeColor: color(d.group),
+                outerStrokeWidth: 30,
+                radius: (d.size * 7000 + 5) ,
+                showLabelText: true,
+                labelText: d.id,
+                labelColor: color(d.group)
+            });
+        });
+        /*
+                node.append("text")
+                    .attr("dx", 12)
+                    .attr("dy", ".35em")
+                    .text(function (d) { return d.id });
+        */
+
+        console.log(node);
+        //add drag capabilities
+        var drag_handler = d3.drag()
+            .on("start", drag_start)
+            .on("drag", drag_drag)
+            .on("end", drag_end);
+
+        drag_handler(node);
+
+
+        //add zoom capabilities
+        var zoom_handler = d3.zoom()
+            .on("zoom", zoom_actions);
+
+        zoom_handler(svg);
+
+        /** Functions **/
+
+        //Drag functions
+        //d is the node
+        function drag_start(d) {
+            if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+
+        //make sure you can't drag the circle outside the box
+        function drag_drag(d) {
+            d.fx = d3.event.x;
+            d.fy = d3.event.y;
+        }
+
+        function drag_end(d) {
+            if (!d3.event.active) simulation.alphaTarget(0.1);
+            d.fx = null;
+            d.fy = null;
+        }
+
+        //Zoom functions
+        function zoom_actions() {
+            g.attr("transform", d3.event.transform)
+        }
+
+        function tickActions() {
+            //update circle positions each tick of the simulation
+            node.attr('transform', d => `translate(${d.x},${d.y})`);
+        }
+    })
+        .catch(function (error) {
+            console.log("ERROR!", error)
+        });
+</script>
