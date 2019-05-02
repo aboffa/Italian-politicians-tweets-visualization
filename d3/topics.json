@@ -1,0 +1,99 @@
+{
+  "Europe": {
+    "keywords": [
+      "europ"
+    ]
+  },
+  "Migrations": {
+    "keywords": [
+      "migra",
+      "immigra"
+    ]
+  },
+  "Women": {
+    "keywords": [
+      "donna",
+      "femmin"
+    ]
+  },
+  "Culture": {
+    "keywords": [
+      "giovane",
+      "scuola",
+      "università",
+      "cultura"
+    ]
+  },
+  "Economics": {
+    "keywords": [
+      "crescita",
+      "pil",
+      "debito",
+      "spread"
+    ]
+  },
+  "Tecnology": {
+    "keywords": [
+      "tecnologia",
+      "web"
+    ]
+  },
+  "Family": {
+    "keywords": [
+      "famiglia",
+      "padre",
+      "madre",
+      "figlo"
+    ]
+  },
+  "Sud": {
+    "keywords": [
+      "sud",
+      "meridione"
+    ]
+  },
+  "Health": {
+    "keywords": [
+      "salute",
+      "malatti",
+      "morbillo",
+      "vaccin"
+    ]
+  },
+  "Mafia": {
+    "keywords": [
+      "mafia",
+      "camorra",
+      "ndrangheta"
+    ]
+  },
+  "Seniority": {
+    "keywords": [
+      "pensione",
+      "anzian"
+    ]
+  },
+  "Work":{
+    "keywords": [
+      "lavor"
+    ]
+  },
+  "migra": 0,
+  "donna": 0,
+  "giovane": 0,
+  "mercato": 0,
+  "economi": 0,
+  "crescita": 0,
+  "pil": 0,
+  "debito": 0,
+  "scuola": 0,
+  "lavor": 0,
+  "web": 0,
+  "tecnologia": 0,
+  "pensione": 0,
+  "mafia": 0,
+  "salute": 0,
+  "ambiente": 0,
+  "famiglia": 0,
+  "sud": 0
+}

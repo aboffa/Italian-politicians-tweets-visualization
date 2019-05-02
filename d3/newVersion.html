@@ -1,172 +1,279 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<style>
-    .links line {
-        stroke: #999;
-        stroke-opacity: 0.6;
-    }
+<html>
 
-    .nodes circle {
-        stroke: black;
-        stroke-width: 0px;
-    }
-</style>
-<svg id="svg"></svg>
-<script src="https://d3js.org/d3.v5.min.js"></script>
+<body>
+    <div class="centered">
+        <div class="title">
+            <h1>Italian politicians tweets visualization</h1>
+
+        </div>
+
+    </div>
+    <form>
+        <div class="centered">
+            <div class="form-group">
+                <label>Select the first politician</label>
+                <select class="form-control" id="firstPoliticiansSelect">
+                    <option>--</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Select the second politician</label>
+                <select class="form-control" id="secondPoliticiansSelect">
+                    <option>--</option>
+                </select>
+            </div>
+            <button id="primaryButton" type="button" class="btn btn-primary">Go!</button>
+            <button id="cancelButton" type="button" class="btn btn-danger">Cancel</button>
+        </div>
+    </form>
+    <svg id="svg"></svg>
+</body>
+
+</html>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://d3js.org/d3.v5.js"></script>
 <script src="node-pie.js"></script>
 <script>
-    var width = window.innerWidth
-    var height = window.innerHeight
-    var svg = document.getElementById('svg');
-    svg.setAttribute("width", width)
-    svg.setAttribute("height", height)
-
-    //create somewhere to put the force directed graph
-    var svg = d3.select("svg"),
-        width = +svg.attr("width"),
-        height = +svg.attr("height");
-
+    document.getElementById("cancelButton").disabled = true;
     var color = d3.scaleOrdinal(d3.schemeCategory10);
 
-    function toRadius(size){
-        return (size * 8000 + 5) 
-    }
-    d3.json("http://localhost:8000/d3/politiciansNEW.json").then(function (graph) {
-        //set up the simulation and add forces
-        var simulation = d3.forceSimulation(graph.nodes).velocityDecay(0.6)
-
-        var center_force = d3.forceCenter(width / 2, height / 2);
-
-        simulation
-            //.force("center_force", center_force)
-            .force("charge", d3.forceManyBody().strength(-1000))
-            .force("collide",d3.forceCollide().radius(function(d) {
-                return toRadius(d.size)
-            }).strength(3.5))
-            //.force("center", d3.forceCenter(width / 2, height / 2))
-            .force("xCenter", d3.forceX().x(width / 2).strength(function (d) {
-                //return (d.size * 25) + 0.4
-                return 0.2
-            }))
-            .force("yCenter", d3.forceY().y(height / 2).strength(function (d) {
-                //return (d.size * 25) + 0.7
-                return 0.4
-            }))
-            .force('xLeft', d3.forceX()
-                .x(50).strength(function (d) {
-                    return (d.politicians[0].value / 150)
-                }))
-            .force('xRigth', d3.forceX()
-                .x(width-50).strength(function (d) {
-                    return (d.politicians[1].value / 150)
-                }))
+    fetch("http://localhost:8000/d3/politicians.json")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (objectPoliticians) {
+            var index = 0;
+            let firstPoliticiansSelect = document.getElementById("firstPoliticiansSelect");
+            let secondPoliticiansSelect = document.getElementById("secondPoliticiansSelect");
+            for (var key in objectPoliticians) {
+                var opt1 = document.createElement("option");
+                var opt2 = document.createElement("option");
+                opt1.value = index;
+                opt1.innerHTML = key;
+                opt2.value = index;
+                opt2.innerHTML = key;
+                // then append it to the select element
+                firstPoliticiansSelect.appendChild(opt1);
+                secondPoliticiansSelect.appendChild(opt2);
+                index++;
+            }
 
 
 
-        //add tick instructions:
-        simulation.on("tick", tickActions);
+            var primaryButton = document.getElementById("primaryButton")
 
-        //add encompassing group for the zoom
-        var g = svg.append("g")
-            .attr("class", "everything");
+            function sumRatiosPolitician(d, name1, name2) {
+                let sum = (parseFloat(d.politicians[name1]) + parseFloat(d.politicians[name2]));
+                console.log(sum)
+                return sum;
+            }
 
-        //draw circles for the nodes
-        var node = g.selectAll('.nodes')
-            .data(graph.nodes)
-            .enter()
-            .append('g')
-            .attr('class', 'nodes')
-        /*
-                node.append('circle')
-                    .attr("r", function (d) {
-                        return d.size * 1000
+            primaryButton.onclick = function () {
+                let firstPoliticiansSelect = document.getElementById("firstPoliticiansSelect");
+                let secondPoliticiansSelect = document.getElementById("secondPoliticiansSelect");
+                //chech if different 
+                var fistrSelected = firstPoliticiansSelect.options[firstPoliticiansSelect.selectedIndex].text;
+                var secondSelected = secondPoliticiansSelect.options[secondPoliticiansSelect.selectedIndex].text;
+                console.log(fistrSelected + " " + secondSelected)
+
+                var width = window.innerWidth
+                var height = window.innerHeight / 1.5
+                var svg = document.getElementById('svg');
+                svg.setAttribute("width", width)
+                svg.setAttribute("height", height)
+
+                //create somewhere to put the force directed graph
+                var svg = d3.select("svg"),
+                    width = +svg.attr("width"),
+                    height = +svg.attr("height");
+
+
+                d3.json("http://localhost:8000/d3/politiciansNEW.json").then(function (graph) {
+                    //set up the simulation and add forces
+                    graph.nodes.forEach(function (elem) {
+                        console.log(elem)
                     })
-                    .attr("fill", function (d) { return color(d.group); })
-        */
+                    var simulation = d3.forceSimulation(graph.nodes)
 
-        function fromNameToColor(name) {
-            if (name == "matteorenzi") {
-                //return d3.rgb("blue")
-                return 1
+                    //var center_force = d3.forceCenter(width / 2, height / 2);
+
+                    simulation
+                        //.force("center_force", center_force)
+                        .force("charge", d3.forceManyBody().strength(-1600))
+                        //.force("center", d3.forceCenter(width / 2, height / 2))
+                        .force("xCenter", d3.forceX().x(width / 2).strength(function (d) {
+                            return sumRatiosPolitician(d, fistrSelected, secondSelected) * 25 + 0.2
+                            //return 0.6
+                        }))
+                        .force("yCenter", d3.forceY().y(height / 2).strength(function (d) {
+                            return sumRatiosPolitician(d, fistrSelected, secondSelected) * 25 + 0.4
+                            //return 0.8
+                        }))
+
+                        .force('xLeft', d3.forceX()
+                            .x(50).strength(function (d) {
+                                return (d.politicians[fistrSelected] * 500)
+                            }))
+                        .force('xRigth', d3.forceX()
+                            .x(width - 50).strength(function (d) {
+                                return (d.politicians[secondSelected] * 500)
+                            }))
+
+
+
+                    //add tick instructions:
+                    simulation.on("tick", tickActions);
+                    //simulation.nodes().append("{id: \"europ\", group: 1, size: 0.00527979691692159, vx: -0.000004155031129493558,vy: 0.000012116999085481916, x: 505.7165156874357, y: 220.5508032930105}" )
+                    //add encompassing group for the zoom
+                    var g = svg.append("g")
+                        .attr("class", "everything");
+
+                    //draw circles for the nodes
+                    var node = g.selectAll('.nodes')
+                        .data(graph.nodes)
+                        .enter()
+                        .append('g')
+                        .attr('class', 'nodes')
+                    /*
+                            node.append('circle')
+                                .attr("r", function (d) {
+                                    return d.size * 1000
+                                })
+                                .attr("fill", function (d) { return color(d.group); })
+                    */
+                    /*
+                                node.
+                                    .append("image")
+                                    .attr("class", "circle")
+                                    .attr("xlink:href", "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Di_Maio_2018.jpg/800px-Di_Maio_2018.jpg")
+                                    .attr("x", "50px")
+                                    .attr("y", "50px")
+                                    .attr("width", "16px")
+                                    .attr("height", "16px");
+                    
+                                node
+                                    .enter()
+                                    .append("g")
+                                    .append("image")
+                                    .attr("class", "circle")
+                                    .attr("xlink:href", "https://upload.wikimedia.org/wikipedia/commons/8/81/Matteo_Renzi_2015.jpeg")
+                                    .attr("x", "200px")
+                                    .attr("y", "200px")
+                                    .attr("width", "16px")
+                                    .attr("height", "16px");
+                    */
+                    function fromNameToColor(name) {
+                        if (name == "Matteo Renzi") {
+                            //return d3.rgb("blue")
+                            return 1
+                        }
+                        if (name == "Luigi Di Maio") {
+
+                            return 2
+                        }
+                        //return d3.rgb("yellow")
+                        return 3
+
+                    }
+
+                    node.each(function (d) {
+                        var percentage = []
+                        var sum = sumRatiosPolitician(d, fistrSelected, secondSelected)
+                        //if (sum != 0) {
+                        if (sum > 0) {
+                            percentage.push({ "politic": fistrSelected, "percent": Math.round(d.politicians[fistrSelected] / sum * 100), "color": fromNameToColor(fistrSelected) })
+                            percentage.push({ "politic": secondSelected, "percent": Math.round(d.politicians[secondSelected] / sum * 100), "color": fromNameToColor(secondSelected) })
+                            /*d.politicians.forEach(element => {
+                                //console.log(element, d.value)
+                                percentage.push({ "politic": element["politic"], "percent": element["value"], "color": fromNameToColor((element["politic"])) })
+                            });*/
+                            console.log(percentage)
+                            NodePieBuilder.drawNodePie(d3.select(this), percentage, {
+                                parentNodeColor: color(d.group),
+                                outerStrokeWidth: 30,
+                                radius: (sum * 5000 + 7),
+                                showLabelText: true,
+                                labelText: d.id,
+                                labelColor: color(d.group)
+                            });
+                        }
+                    });
+                    /*
+                            node.append("text")
+                                .attr("dx", 12)
+                                .attr("dy", ".35em")
+                                .text(function (d) { return d.id });
+                    */
+
+                    console.log(node);
+                    //add drag capabilities
+                    var drag_handler = d3.drag()
+                        .on("start", drag_start)
+                        .on("drag", drag_drag)
+                        .on("end", drag_end);
+
+                    drag_handler(node);
+
+
+                    //add zoom capabilities
+                    var zoom_handler = d3.zoom()
+                        .on("zoom", zoom_actions);
+
+                    zoom_handler(svg);
+
+                    /** Functions **/
+
+                    //Drag functions
+                    //d is the node
+                    function drag_start(d) {
+                        if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+                        d.fx = d.x;
+                        d.fy = d.y;
+                    }
+
+                    //make sure you can't drag the circle outside the box
+                    function drag_drag(d) {
+                        d.fx = d3.event.x;
+                        d.fy = d3.event.y;
+                    }
+
+                    function drag_end(d) {
+                        if (!d3.event.active) simulation.alphaTarget(0.1);
+                        d.fx = null;
+                        d.fy = null;
+                    }
+
+                    //Zoom functions
+                    function zoom_actions() {
+                        g.attr("transform", d3.event.transform)
+                    }
+
+                    function tickActions() {
+                        //update circle positions each tick of the simulation
+                        node.attr('transform', d => `translate(${d.x},${d.y})`);
+                    }
+                    document.getElementById("primaryButton").disabled = true;
+                    document.getElementById("cancelButton").disabled = false;
+                })
+                    .catch(function (error) {
+                        console.log("ERROR!", error)
+                    });
             }
-            else {
-                //return d3.rgb("yellow")
-                return 2
+
+            var cancelButton = document.getElementById("cancelButton")
+
+            cancelButton.onclick = function () {
+                document.getElementById("svg").innerHTML = ""
+                document.getElementById("primaryButton").disabled = false;
+                document.getElementById("cancelButton").disabled = true;
             }
-        }
 
-        node.each(function (d) {
-            var percentage = []
-            d.politicians.forEach(element => {
-                //console.log(element, d.value)
-                percentage.push({ "politic": element["politic"], "percent": element["value"], "color": fromNameToColor((element["politic"])) })
-            });
-            console.log(percentage)
-            NodePieBuilder.drawNodePie(d3.select(this), percentage, {
-                parentNodeColor: color(d.group),
-                outerStrokeWidth: 30,
-                radius: toRadius(d.size) ,
-                showLabelText: true,
-                labelText: d.id,
-                labelColor: color(d.group)
-            });
         });
-        /*
-                node.append("text")
-                    .attr("dx", 12)
-                    .attr("dy", ".35em")
-                    .text(function (d) { return d.id });
-        */
-
-        console.log(node);
-        //add drag capabilities
-        var drag_handler = d3.drag()
-            .on("start", drag_start)
-            .on("drag", drag_drag)
-            .on("end", drag_end);
-
-        drag_handler(node);
 
 
-        //add zoom capabilities
-        var zoom_handler = d3.zoom()
-            .on("zoom", zoom_actions);
-
-        zoom_handler(svg);
-
-        /** Functions **/
-
-        //Drag functions
-        //d is the node
-        function drag_start(d) {
-            if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-            d.fx = d.x;
-            d.fy = d.y;
-        }
-
-        //make sure you can't drag the circle outside the box
-        function drag_drag(d) {
-            d.fx = d3.event.x;
-            d.fy = d3.event.y;
-        }
-
-        function drag_end(d) {
-            if (!d3.event.active) simulation.alphaTarget(0.1);
-            d.fx = null;
-            d.fy = null;
-        }
-
-        //Zoom functions
-        function zoom_actions() {
-            g.attr("transform", d3.event.transform)
-        }
-
-        function tickActions() {
-            //update circle positions each tick of the simulation
-            node.attr('transform', d => `translate(${d.x},${d.y})`);
-        }
-    })
-        .catch(function (error) {
-            console.log("ERROR!", error)
-        });
 </script>

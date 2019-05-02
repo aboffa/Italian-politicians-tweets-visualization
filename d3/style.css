@@ -1,0 +1,23 @@
+.links line {
+    stroke: #999;
+    stroke-opacity: 0.6;
+}
+
+.nodes circle {
+    stroke: black;
+    stroke-width: 0px;
+}
+
+.form-group {
+    margin-left: 20%;
+    margin-right: 20%;
+    
+}
+
+.title {
+    margin:2%;
+}
+
+.centered {
+    text-align: center;
+}

@@ -45,6 +45,26 @@ tweetterNames = [
 
 ]
 
+politicians = {
+    "Matteo Renzi":{
+        "twetterName":"matteorenzi",
+        "party": "PD",
+        "color": "#FFA500",
+        "photo": "https:\/\/it.wikipedia.org\/wiki\/Matteo_Renzi#\/media\/File:Matteo_Renzi_2015.jpeg"
+    },
+    "Luigi Di Maio":{
+        "twetterName": "luigidimaio",
+        "party": "M5S",
+        "color": "#FFFF00",
+        "photo": "https:\/\/it.wikipedia.org\/wiki\/Luigi_Di_Maio#\/media\/File:Di_Maio_2018.jpg"
+    },
+    "Matteo Salvini":{
+        "twetterName": "matteosalvinimi",
+        "party": "Lega",
+        "color": "#08C318",
+        "photo": "https:\/\/lmo.wikipedia.org\/wiki\/Matteo_Salvini#\/media\/File:Matteo_Salvini_Viminale_(cropped).jpg"
+    }
+}
 notToConsider = [
     "essere|stare"
     "fa",

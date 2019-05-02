@@ -1,0 +1,44 @@
+{
+    "Matteo Renzi": {
+        "twetterName": "matteorenzi",
+        "party": "PD",
+        "color": "#FFA500",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/8/81/Matteo_Renzi_2015.jpeg"
+    },
+    "Luigi Di Maio": {
+        "twetterName": "luigidimaio",
+        "party": "M5S",
+        "color": "#FFFF00",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Di_Maio_2018.jpg/800px-Di_Maio_2018.jpg"
+    },
+    "Matteo Salvini": {
+        "twetterName": "matteosalvinimi",
+        "party": "Lega",
+        "color": "#08C318",
+        "photo": "https:\/\/lmo.wikipedia.org\/wiki\/Matteo_Salvini#\/media\/File:Matteo_Salvini_Viminale_(cropped).jpg"
+    },
+    "Laura Boldrini": {
+        "twetterName": "lauraboldrini",
+        "party": "Liberi e Uguali"
+    },
+    "Giorgia Meloni": {
+        "twetterName": "GiorgiaMeloni",
+        "party": "Fratelli di Italia"
+    },
+    "Simone di Stefano": {
+        "twetterName": "distefanoTW",
+        "party": "CasaPound"
+    },
+    "Viola Carofalo": {
+        "twetterName": "ViolaCarofalo",
+        "party": "Potere al Popolo"
+    },
+    "Emma Bonino ": {
+        "twetterName": "ViolaCarofalo",
+        "party": "+Europa"
+    },
+    "Silvio Berlusconi": {
+        "twetterName": "berlusconi",
+        "party": "Forza Italia"
+    }
+}
