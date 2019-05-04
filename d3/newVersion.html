@@ -28,7 +28,11 @@
             <button id="cancelButton" type="button" class="btn btn-danger">Cancel</button>
         </div>
     </form>
-    <svg id="svg"></svg>
+    <svg id="svg">
+        <clipPath id="clipCircle">
+            <circle r="100" cx="50" cy="50" />
+        </clipPath>
+    </svg>
 </body>
 
 </html>
@@ -41,6 +45,8 @@
 <script>
     document.getElementById("cancelButton").disabled = true;
     var color = d3.scaleOrdinal(d3.schemeCategory10);
+    var imageDiameter = 100;
+    var xOffSet = 200;
 
     fetch("http://localhost:8000/d3/politicians.json")
         .then(function (response) {
@@ -64,12 +70,10 @@
             }
 
 
-
             var primaryButton = document.getElementById("primaryButton")
 
             function sumRatiosPolitician(d, name1, name2) {
                 let sum = (parseFloat(d.politicians[name1]) + parseFloat(d.politicians[name2]));
-                console.log(sum)
                 return sum;
             }
 
@@ -82,7 +86,7 @@
                 console.log(fistrSelected + " " + secondSelected)
 
                 var width = window.innerWidth
-                var height = window.innerHeight / 1.5
+                var height = window.innerHeight * 0.5
                 var svg = document.getElementById('svg');
                 svg.setAttribute("width", width)
                 svg.setAttribute("height", height)
@@ -95,6 +99,23 @@
 
                 d3.json("http://localhost:8000/d3/politiciansNEW.json").then(function (graph) {
                     //set up the simulation and add forces
+
+                    graph.nodes.push(
+                        {
+                            "id": fistrSelected,
+                            "isTopic": 0,
+                            "side": "left"
+                        }
+                    )
+
+                    graph.nodes.push(
+                        {
+                            "id": secondSelected,
+                            "isTopic": 0,
+                            "side": "right"
+                        }
+                    )
+
                     graph.nodes.forEach(function (elem) {
                         console.log(elem)
                     })
@@ -104,25 +125,74 @@
 
                     simulation
                         //.force("center_force", center_force)
-                        .force("charge", d3.forceManyBody().strength(-1600))
+                        .force("charge", d3.forceManyBody().strength(-2000))
                         //.force("center", d3.forceCenter(width / 2, height / 2))
                         .force("xCenter", d3.forceX().x(width / 2).strength(function (d) {
-                            return sumRatiosPolitician(d, fistrSelected, secondSelected) * 25 + 0.2
-                            //return 0.6
+                            if (d.isTopic == 1) {
+                                return sumRatiosPolitician(d, fistrSelected, secondSelected) * 25 + 0.2
+                                //return 0.6
+                            }
+                            else {
+                                return 0
+                            }
                         }))
                         .force("yCenter", d3.forceY().y(height / 2).strength(function (d) {
-                            return sumRatiosPolitician(d, fistrSelected, secondSelected) * 25 + 0.4
-                            //return 0.8
+                            if (d.isTopic == 1) {
+                                return sumRatiosPolitician(d, fistrSelected, secondSelected) * 25 + 0.4
+                                //return 0.8
+                            }
+                            else {
+                                return 1
+                            }
                         }))
 
                         .force('xLeft', d3.forceX()
-                            .x(50).strength(function (d) {
-                                return (d.politicians[fistrSelected] * 500)
+                            .x(xOffSet).strength(function (d) {
+                                if (d.isTopic == 1) {
+                                    return (d.politicians[fistrSelected] * 500)
+                                }
+                                else {
+                                    if (d.side == "left") {
+                                        return 1
+                                    }
+                                    else {
+                                        return 0
+                                    }
+                                }
                             }))
                         .force('xRigth', d3.forceX()
-                            .x(width - 50).strength(function (d) {
-                                return (d.politicians[secondSelected] * 500)
+                            .x(width - xOffSet).strength(function (d) {
+                                if (d.isTopic == 1) {
+                                    return (d.politicians[secondSelected] * 500)
+                                }
+                                else {
+                                    if (d.side == "left") {
+                                        return 0
+                                    }
+                                    else {
+                                        return 1
+                                    }
+                                }
                             }))
+                    /*
+                .force('xleftPhoto', d3.forceCenter(50, height / 2)
+                    .strength(function (d) {
+                        if (d.isTopic == 0) {
+                            return 100
+                        }
+                        else {
+                            return 0
+                        }
+                    }))
+                .force('yrightPhoto', d3.forceCenter(width - 50, height / 2)
+                    .strength(function (d) {
+                        if (d.isTopic == 0) {
+                            return 100
+                        }
+                        else {
+                            return 0
+                        }
+                    }))*/
 
 
 
@@ -139,34 +209,7 @@
                         .enter()
                         .append('g')
                         .attr('class', 'nodes')
-                    /*
-                            node.append('circle')
-                                .attr("r", function (d) {
-                                    return d.size * 1000
-                                })
-                                .attr("fill", function (d) { return color(d.group); })
-                    */
-                    /*
-                                node.
-                                    .append("image")
-                                    .attr("class", "circle")
-                                    .attr("xlink:href", "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Di_Maio_2018.jpg/800px-Di_Maio_2018.jpg")
-                                    .attr("x", "50px")
-                                    .attr("y", "50px")
-                                    .attr("width", "16px")
-                                    .attr("height", "16px");
-                    
-                                node
-                                    .enter()
-                                    .append("g")
-                                    .append("image")
-                                    .attr("class", "circle")
-                                    .attr("xlink:href", "https://upload.wikimedia.org/wikipedia/commons/8/81/Matteo_Renzi_2015.jpeg")
-                                    .attr("x", "200px")
-                                    .attr("y", "200px")
-                                    .attr("width", "16px")
-                                    .attr("height", "16px");
-                    */
+
                     function fromNameToColor(name) {
                         if (name == "Matteo Renzi") {
                             //return d3.rgb("blue")
@@ -181,36 +224,64 @@
 
                     }
 
-                    node.each(function (d) {
-                        var percentage = []
-                        var sum = sumRatiosPolitician(d, fistrSelected, secondSelected)
-                        //if (sum != 0) {
-                        if (sum > 0) {
-                            percentage.push({ "politic": fistrSelected, "percent": Math.round(d.politicians[fistrSelected] / sum * 100), "color": fromNameToColor(fistrSelected) })
-                            percentage.push({ "politic": secondSelected, "percent": Math.round(d.politicians[secondSelected] / sum * 100), "color": fromNameToColor(secondSelected) })
-                            /*d.politicians.forEach(element => {
-                                //console.log(element, d.value)
-                                percentage.push({ "politic": element["politic"], "percent": element["value"], "color": fromNameToColor((element["politic"])) })
-                            });*/
-                            console.log(percentage)
-                            NodePieBuilder.drawNodePie(d3.select(this), percentage, {
-                                parentNodeColor: color(d.group),
-                                outerStrokeWidth: 30,
-                                radius: (sum * 5000 + 7),
-                                showLabelText: true,
-                                labelText: d.id,
-                                labelColor: color(d.group)
-                            });
+                    node.each(function (singleNode) {
+                        if (singleNode.isTopic == 1) {
+                            var percentage = []
+                            var sum = sumRatiosPolitician(singleNode, fistrSelected, secondSelected)
+                            //if (sum != 0) {
+                            if (sum > 0) {
+                                percentage.push({ "politic": fistrSelected, "percent": Math.round(singleNode.politicians[fistrSelected] / sum * 100), "color": fromNameToColor(fistrSelected) })
+                                percentage.push({ "politic": secondSelected, "percent": Math.round(singleNode.politicians[secondSelected] / sum * 100), "color": fromNameToColor(secondSelected) })
+                                /*d.politicians.forEach(element => {
+                                    //console.log(element, d.value)
+                                    percentage.push({ "politic": element["politic"], "percent": element["value"], "color": fromNameToColor((element["politic"])) })
+                                });*/
+                                console.log(percentage)
+                                NodePieBuilder.drawNodePie(d3.select(this), percentage, {
+                                    parentNodeColor: color(singleNode.group),
+                                    outerStrokeWidth: 30,
+                                    radius: (sum * 5000 + 7),
+                                    showLabelText: true,
+                                    labelText: singleNode.id,
+                                    labelColor: color(singleNode.group)
+                                });
+                            }
+                        }
+
+                        else {
+
+                            var nodeEnter = d3.select(this);
+                            /*nodeEnter.append("svg:circle")
+                                .attr("r", imageDiameter)*/
+                            nodeEnter.append("svg:image")
+                                .attr("xlink:href", function (d) {
+                                    if (d.side == "left") {
+                                        return objectPoliticians[fistrSelected].photo;
+                                    }
+                                    else {
+                                        return objectPoliticians[secondSelected].photo
+                                    }
+                                })
+                                .attr("clip-path", "url(#clipCircle)")
+                                .attr("x", function (d) { return -imageDiameter/2 -32 })
+                                .attr("y", function (d) { return -imageDiameter/2 })
+                                .attr("height", imageDiameter*2.7)
+                                .attr("width", imageDiameter*2.7);
+
+                            console.log(singleNode)
+                            /*
+                            if (d.side == "left") {
+                                d.fx = 0
+                                d.fy = height / 2
+                            }
+                            else {
+                                d.fx = width
+                                d.fy = height / 2
+                            }*/
                         }
                     });
-                    /*
-                            node.append("text")
-                                .attr("dx", 12)
-                                .attr("dy", ".35em")
-                                .text(function (d) { return d.id });
-                    */
 
-                    console.log(node);
+                    //console.log(node);
                     //add drag capabilities
                     var drag_handler = d3.drag()
                         .on("start", drag_start)
@@ -231,7 +302,7 @@
                     //Drag functions
                     //d is the node
                     function drag_start(d) {
-                        if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+                        if (!d3.event.active) simulation.alphaTarget(0.01).restart();
                         d.fx = d.x;
                         d.fy = d.y;
                     }
@@ -243,7 +314,7 @@
                     }
 
                     function drag_end(d) {
-                        if (!d3.event.active) simulation.alphaTarget(0.1);
+                        if (!d3.event.active) simulation.alphaTarget(0.01);
                         d.fx = null;
                         d.fy = null;
                     }
@@ -268,7 +339,8 @@
             var cancelButton = document.getElementById("cancelButton")
 
             cancelButton.onclick = function () {
-                document.getElementById("svg").innerHTML = ""
+                //Initial state
+                document.getElementById("svg").innerHTML = "<clipPath id='clipCircle'><circle r='100' cx='50' cy='50' /></clipPath>"
                 document.getElementById("primaryButton").disabled = false;
                 document.getElementById("cancelButton").disabled = true;
             }

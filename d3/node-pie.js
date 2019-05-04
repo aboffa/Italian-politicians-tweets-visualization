@@ -65,10 +65,48 @@ function drawPieChart(nodeElement, percentages, options) {
             .style('stroke', color(percentages[p].color))
             .style('stroke-width', radius)
             .style('stroke-dasharray',
-                    halfCircumference * percentToDraw / 100
-                    + ' '
-                    + halfCircumference);
+                halfCircumference * percentToDraw / 100
+                + ' '
+                + halfCircumference);
     }
+/*
+
+    var k = percentages[0] /100
+    var r = radius
+    var t0, t1 = k * 2 * Math.PI;
+
+    // Solve for theta numerically.
+    if (k > 0 && k < 1) {
+        t1 = Math.pow(12 * k * Math.PI, 1 / 3);
+        for (var i = 0; i < 10; ++i) {
+            t0 = t1;
+            t1 = (Math.sin(t0) - t0 * Math.cos(t0) + 2 * k * Math.PI) / (1 - Math.cos(t0));
+        }
+        k = (1 - Math.cos(t1 / 2)) / 2;
+    }
+
+    var h = 2 * r * k,
+        y = r - h,
+        a = (Math.PI - t1) / 2;
+
+    var clip = d3.select("#clip rect");
+
+    clip
+        .attr("y", y)
+        .attr("height", h);
+
+
+    nodeElement.insert('circle')
+        .attr("fill", "steelblue")
+        .attr("clip-path", "url(#clip)")
+        .attr("r", halfRadius)
+
+    nodeElement.insert('circle')
+        .attr("fill", "none")
+        .attr("stroke","black")
+        .attr("clip-path", "url(#clip)")
+        .attr("r", halfRadius)
+*/
 }
 
 function drawTitleText(nodeElement, options) {
@@ -79,7 +117,7 @@ function drawTitleText(nodeElement, options) {
     nodeElement.append("text")
         .text(String(text))
         .attr("fill", color)
-        .attr("dy", radius + 20 );
+        .attr("dy", radius + 20);
 }
 
 var NodePieBuilder = {

@@ -50,7 +50,7 @@ for k, topic in enumerate(myUtils.topics.keys()):
 
     #politicians.sort(key = lambda x : x["value"] )
 
-    forForceGraph["nodes"].append({"id": topic, "group": 1,  "politicians":politicians })
+    forForceGraph["nodes"].append({"id": topic,  "isTopic":1,  "group": 1,  "politicians":politicians })
 
 print(forForceGraph)
 # for i in range(0,len(mytopic.keys())):

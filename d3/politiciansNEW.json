@@ -1,1 +1,309 @@
-{"nodes": [{"id": "europ", "group": 1, "politicians": {"Matteo Renzi": 0.004411238723522632, "Luigi Di Maio": 0.0008685581933989577, "Matteo Salvini": 0.007922535211267605, "Laura Boldrini": 0.00255500354861604, "Giorgia Meloni": 0.012677266867211, "Simone di Stefano": 0.0078091106290672455, "Viola Carofalo": 0.0017338534893801473, "Emma Bonino ": 0.0017338534893801473, "Silvio Berlusconi": 0.026267281105990782}}, {"id": "migra", "group": 1, "politicians": {"Matteo Renzi": 0.0010730040138298294, "Luigi Di Maio": 0.00028951939779965256, "Matteo Salvini": 0.004566461267605634, "Laura Boldrini": 0.0009226401703335699, "Giorgia Meloni": 0.005908895573700043, "Simone di Stefano": 0.0023138105567606653, "Viola Carofalo": 0.0017338534893801473, "Emma Bonino ": 0.0017338534893801473, "Silvio Berlusconi": 0.0004608294930875576}}, {"id": "donna", "group": 1, "politicians": {"Matteo Renzi": 0.0014306720184397727, "Luigi Di Maio": 0.0008685581933989577, "Matteo Salvini": 0.0018705985915492957, "Laura Boldrini": 0.022533711852377573, "Giorgia Meloni": 0.003867640739149119, "Simone di Stefano": 0.0011569052783803326, "Viola Carofalo": 0.0019505851755526658, "Emma Bonino ": 0.0019505851755526658, "Silvio Berlusconi": 0.0004608294930875576}}, {"id": "giovane", "group": 1, "politicians": {"Matteo Renzi": 0.0009537813456265152, "Luigi Di Maio": 0.00028951939779965256, "Matteo Salvini": 0.0007152288732394366, "Laura Boldrini": 0.0014904187366926898, "Giorgia Meloni": 0.001826385904598195, "Simone di Stefano": 0.00028922631959508316, "Viola Carofalo": 0.003684438664932813, "Emma Bonino ": 0.003684438664932813, "Silvio Berlusconi": 0.0032258064516129032}}, {"id": "mercato", "group": 1, "politicians": {"Matteo Renzi": 0.00031792711520883837, "Luigi Di Maio": 0.0008685581933989577, "Matteo Salvini": 0.0003301056338028169, "Laura Boldrini": 0, "Giorgia Meloni": 0.00032230339492909325, "Simone di Stefano": 0.0013015184381778742, "Viola Carofalo": 0.00021673168617251842, "Emma Bonino ": 0.00021673168617251842, "Silvio Berlusconi": 0.0006912442396313364}}, {"id": "economi", "group": 1, "politicians": {"Matteo Renzi": 0.0017883400230497158, "Luigi Di Maio": 0.0008685581933989577, "Matteo Salvini": 0.0014304577464788733, "Laura Boldrini": 0.00039034776437189497, "Giorgia Meloni": 0.0013966480446927375, "Simone di Stefano": 0.0026030368763557484, "Viola Carofalo": 0.0019505851755526658, "Emma Bonino ": 0.0019505851755526658, "Silvio Berlusconi": 0.004608294930875576}}, {"id": "crescita", "group": 1, "politicians": {"Matteo Renzi": 0.0011524857926320392, "Luigi Di Maio": 0.0005790387955993051, "Matteo Salvini": 0, "Laura Boldrini": 0.00021291696238466998, "Giorgia Meloni": 0.0005371723248818221, "Simone di Stefano": 0.001012292118582791, "Viola Carofalo": 0.0006501950585175553, "Emma Bonino ": 0.0006501950585175553, "Silvio Berlusconi": 0.001152073732718894}}, {"id": "pil", "group": 1, "politicians": {"Matteo Renzi": 0.0010730040138298294, "Luigi Di Maio": 0, "Matteo Salvini": 0, "Laura Boldrini": 0.0027679205110007097, "Giorgia Meloni": 0, "Simone di Stefano": 0.0008676789587852494, "Viola Carofalo": 0.00021673168617251842, "Emma Bonino ": 0.00021673168617251842, "Silvio Berlusconi": 0}}, {"id": "debito", "group": 1, "politicians": {"Matteo Renzi": 0.0007948177880220959, "Luigi Di Maio": 0, "Matteo Salvini": 0.0002750880281690141, "Laura Boldrini": 0, "Giorgia Meloni": 0, "Simone di Stefano": 0.00274765003615329, "Viola Carofalo": 0.0008669267446900737, "Emma Bonino ": 0.0008669267446900737, "Silvio Berlusconi": 0.0004608294930875576}}, {"id": "scuola", "group": 1, "politicians": {"Matteo Renzi": 0.001549894686643087, "Luigi Di Maio": 0, "Matteo Salvini": 0.0017605633802816902, "Laura Boldrini": 0.0008161816891412349, "Giorgia Meloni": 0.0013966480446927375, "Simone di Stefano": 0.0021691973969631237, "Viola Carofalo": 0.0023840485478977026, "Emma Bonino ": 0.0023840485478977026, "Silvio Berlusconi": 0.0002304147465437788}}, {"id": "lavor", "group": 1, "politicians": {"Matteo Renzi": 0.006000874299566824, "Luigi Di Maio": 0.0037637521713954833, "Matteo Salvini": 0.005336707746478873, "Laura Boldrini": 0.00397444996451384, "Giorgia Meloni": 0.0026858616244091102, "Simone di Stefano": 0.0046276211135213305, "Viola Carofalo": 0.011920242739488513, "Emma Bonino ": 0.011920242739488513, "Silvio Berlusconi": 0.009216589861751152}}, {"id": "web", "group": 1, "politicians": {"Matteo Renzi": 0, "Luigi Di Maio": 0, "Matteo Salvini": 0, "Laura Boldrini": 0.00049680624556423, "Giorgia Meloni": 0, "Simone di Stefano": 0.0014461315979754157, "Viola Carofalo": 0, "Emma Bonino ": 0, "Silvio Berlusconi": 0}}, {"id": "tecnologia", "group": 1, "politicians": {"Matteo Renzi": 0, "Luigi Di Maio": 0.0005790387955993051, "Matteo Salvini": 0, "Laura Boldrini": 0, "Giorgia Meloni": 0, "Simone di Stefano": 0.00028922631959508316, "Viola Carofalo": 0, "Emma Bonino ": 0, "Silvio Berlusconi": 0}}, {"id": "pensione", "group": 1, "politicians": {"Matteo Renzi": 0.0007948177880220959, "Luigi Di Maio": 0.0052113491603937466, "Matteo Salvini": 0.001485475352112676, "Laura Boldrini": 0, "Giorgia Meloni": 0.00032230339492909325, "Simone di Stefano": 0, "Viola Carofalo": 0.003684438664932813, "Emma Bonino ": 0.003684438664932813, "Silvio Berlusconi": 0.0002304147465437788}}, {"id": "mafia", "group": 1, "politicians": {"Matteo Renzi": 0.00031792711520883837, "Luigi Di Maio": 0.0008685581933989577, "Matteo Salvini": 0.002365757042253521, "Laura Boldrini": 0, "Giorgia Meloni": 0.0019338203695745595, "Simone di Stefano": 0, "Viola Carofalo": 0.00043346337234503684, "Emma Bonino ": 0.00043346337234503684, "Silvio Berlusconi": 0}}, {"id": "salute", "group": 1, "politicians": {"Matteo Renzi": 0.000596113341016572, "Luigi Di Maio": 0.0026056745801968733, "Matteo Salvini": 0.0009903169014084507, "Laura Boldrini": 0, "Giorgia Meloni": 0, "Simone di Stefano": 0, "Viola Carofalo": 0, "Emma Bonino ": 0, "Silvio Berlusconi": 0.0002304147465437788}}, {"id": "ambiente", "group": 1, "politicians": {"Matteo Renzi": 0, "Luigi Di Maio": 0.00028951939779965256, "Matteo Salvini": 0.0003851232394366197, "Laura Boldrini": 0, "Giorgia Meloni": 0, "Simone di Stefano": 0, "Viola Carofalo": 0.00021673168617251842, "Emma Bonino ": 0.00021673168617251842, "Silvio Berlusconi": 0}}, {"id": "famiglia", "group": 1, "politicians": {"Matteo Renzi": 0.0014306720184397727, "Luigi Di Maio": 0.0017371163867979154, "Matteo Salvini": 0.00214568661971831, "Laura Boldrini": 0.00511000709723208, "Giorgia Meloni": 0.003975075204125484, "Simone di Stefano": 0.004049168474331164, "Viola Carofalo": 0.001517121803207629, "Emma Bonino ": 0.001517121803207629, "Silvio Berlusconi": 0.0020737327188940094}}, {"id": "sud", "group": 1, "politicians": {"Matteo Renzi": 0.00031792711520883837, "Luigi Di Maio": 0.0005790387955993051, "Matteo Salvini": 0.0004951584507042253, "Laura Boldrini": 0.00046132008516678496, "Giorgia Meloni": 0.0009669101847872797, "Simone di Stefano": 0, "Viola Carofalo": 0.001517121803207629, "Emma Bonino ": 0.001517121803207629, "Silvio Berlusconi": 0.0016129032258064516}}], "links": []}
+{
+    "nodes": [
+        {
+            "id": "europ",
+            "isTopic": 1,
+            "group": 1,
+            "politicians": {
+                "Matteo Renzi": 0.004411238723522632,
+                "Luigi Di Maio": 0.0008685581933989577,
+                "Matteo Salvini": 0.007922535211267605,
+                "Laura Boldrini": 0.00255500354861604,
+                "Giorgia Meloni": 0.012677266867211,
+                "Simone di Stefano": 0.0078091106290672455,
+                "Viola Carofalo": 0.0017338534893801473,
+                "Emma Bonino": 0.0017338534893801473,
+                "Silvio Berlusconi": 0.026267281105990782
+            }
+        },
+        {
+            "id": "migra",
+            "isTopic": 1,
+            "group": 1,
+            "politicians": {
+                "Matteo Renzi": 0.0010730040138298294,
+                "Luigi Di Maio": 0.00028951939779965256,
+                "Matteo Salvini": 0.004566461267605634,
+                "Laura Boldrini": 0.0009226401703335699,
+                "Giorgia Meloni": 0.005908895573700043,
+                "Simone di Stefano": 0.0023138105567606653,
+                "Viola Carofalo": 0.0017338534893801473,
+                "Emma Bonino": 0.0017338534893801473,
+                "Silvio Berlusconi": 0.0004608294930875576
+            }
+        },
+        {
+            "id": "donna",
+            "isTopic": 1,
+            "group": 1,
+            "politicians": {
+                "Matteo Renzi": 0.0014306720184397727,
+                "Luigi Di Maio": 0.0008685581933989577,
+                "Matteo Salvini": 0.0018705985915492957,
+                "Laura Boldrini": 0.022533711852377573,
+                "Giorgia Meloni": 0.003867640739149119,
+                "Simone di Stefano": 0.0011569052783803326,
+                "Viola Carofalo": 0.0019505851755526658,
+                "Emma Bonino": 0.0019505851755526658,
+                "Silvio Berlusconi": 0.0004608294930875576
+            }
+        },
+        {
+            "id": "giovane",
+            "isTopic": 1,
+            "group": 1,
+            "politicians": {
+                "Matteo Renzi": 0.0009537813456265152,
+                "Luigi Di Maio": 0.00028951939779965256,
+                "Matteo Salvini": 0.0007152288732394366,
+                "Laura Boldrini": 0.0014904187366926898,
+                "Giorgia Meloni": 0.001826385904598195,
+                "Simone di Stefano": 0.00028922631959508316,
+                "Viola Carofalo": 0.003684438664932813,
+                "Emma Bonino": 0.003684438664932813,
+                "Silvio Berlusconi": 0.0032258064516129032
+            }
+        },
+        {
+            "id": "mercato",
+            "isTopic": 1,
+            "group": 1,
+            "politicians": {
+                "Matteo Renzi": 0.00031792711520883837,
+                "Luigi Di Maio": 0.0008685581933989577,
+                "Matteo Salvini": 0.0003301056338028169,
+                "Laura Boldrini": 0,
+                "Giorgia Meloni": 0.00032230339492909325,
+                "Simone di Stefano": 0.0013015184381778742,
+                "Viola Carofalo": 0.00021673168617251842,
+                "Emma Bonino": 0.00021673168617251842,
+                "Silvio Berlusconi": 0.0006912442396313364
+            }
+        },
+        {
+            "id": "economi",
+            "isTopic": 1,
+            "group": 1,
+            "politicians": {
+                "Matteo Renzi": 0.0017883400230497158,
+                "Luigi Di Maio": 0.0008685581933989577,
+                "Matteo Salvini": 0.0014304577464788733,
+                "Laura Boldrini": 0.00039034776437189497,
+                "Giorgia Meloni": 0.0013966480446927375,
+                "Simone di Stefano": 0.0026030368763557484,
+                "Viola Carofalo": 0.0019505851755526658,
+                "Emma Bonino": 0.0019505851755526658,
+                "Silvio Berlusconi": 0.004608294930875576
+            }
+        },
+        {
+            "id": "crescita",
+            "isTopic": 1,
+            "group": 1,
+            "politicians": {
+                "Matteo Renzi": 0.0011524857926320392,
+                "Luigi Di Maio": 0.0005790387955993051,
+                "Matteo Salvini": 0,
+                "Laura Boldrini": 0.00021291696238466998,
+                "Giorgia Meloni": 0.0005371723248818221,
+                "Simone di Stefano": 0.001012292118582791,
+                "Viola Carofalo": 0.0006501950585175553,
+                "Emma Bonino": 0.0006501950585175553,
+                "Silvio Berlusconi": 0.001152073732718894
+            }
+        },
+        {
+            "id": "pil",
+            "isTopic": 1,
+            "group": 1,
+            "politicians": {
+                "Matteo Renzi": 0.0010730040138298294,
+                "Luigi Di Maio": 0,
+                "Matteo Salvini": 0,
+                "Laura Boldrini": 0.0027679205110007097,
+                "Giorgia Meloni": 0,
+                "Simone di Stefano": 0.0008676789587852494,
+                "Viola Carofalo": 0.00021673168617251842,
+                "Emma Bonino": 0.00021673168617251842,
+                "Silvio Berlusconi": 0
+            }
+        },
+        {
+            "id": "debito",
+            "isTopic": 1,
+            "group": 1,
+            "politicians": {
+                "Matteo Renzi": 0.0007948177880220959,
+                "Luigi Di Maio": 0,
+                "Matteo Salvini": 0.0002750880281690141,
+                "Laura Boldrini": 0,
+                "Giorgia Meloni": 0,
+                "Simone di Stefano": 0.00274765003615329,
+                "Viola Carofalo": 0.0008669267446900737,
+                "Emma Bonino": 0.0008669267446900737,
+                "Silvio Berlusconi": 0.0004608294930875576
+            }
+        },
+        {
+            "id": "scuola",
+            "isTopic": 1,
+            "group": 1,
+            "politicians": {
+                "Matteo Renzi": 0.001549894686643087,
+                "Luigi Di Maio": 0,
+                "Matteo Salvini": 0.0017605633802816902,
+                "Laura Boldrini": 0.0008161816891412349,
+                "Giorgia Meloni": 0.0013966480446927375,
+                "Simone di Stefano": 0.0021691973969631237,
+                "Viola Carofalo": 0.0023840485478977026,
+                "Emma Bonino": 0.0023840485478977026,
+                "Silvio Berlusconi": 0.0002304147465437788
+            }
+        },
+        {
+            "id": "lavor",
+            "isTopic": 1,
+            "group": 1,
+            "politicians": {
+                "Matteo Renzi": 0.006000874299566824,
+                "Luigi Di Maio": 0.0037637521713954833,
+                "Matteo Salvini": 0.005336707746478873,
+                "Laura Boldrini": 0.00397444996451384,
+                "Giorgia Meloni": 0.0026858616244091102,
+                "Simone di Stefano": 0.0046276211135213305,
+                "Viola Carofalo": 0.011920242739488513,
+                "Emma Bonino": 0.011920242739488513,
+                "Silvio Berlusconi": 0.009216589861751152
+            }
+        },
+        {
+            "id": "web",
+            "isTopic": 1,
+            "group": 1,
+            "politicians": {
+                "Matteo Renzi": 0,
+                "Luigi Di Maio": 0,
+                "Matteo Salvini": 0,
+                "Laura Boldrini": 0.00049680624556423,
+                "Giorgia Meloni": 0,
+                "Simone di Stefano": 0.0014461315979754157,
+                "Viola Carofalo": 0,
+                "Emma Bonino": 0,
+                "Silvio Berlusconi": 0
+            }
+        },
+        {
+            "id": "tecnologia",
+            "isTopic": 1,
+            "group": 1,
+            "politicians": {
+                "Matteo Renzi": 0,
+                "Luigi Di Maio": 0.0005790387955993051,
+                "Matteo Salvini": 0,
+                "Laura Boldrini": 0,
+                "Giorgia Meloni": 0,
+                "Simone di Stefano": 0.00028922631959508316,
+                "Viola Carofalo": 0,
+                "Emma Bonino": 0,
+                "Silvio Berlusconi": 0
+            }
+        },
+        {
+            "id": "pensione",
+            "isTopic": 1,
+            "group": 1,
+            "politicians": {
+                "Matteo Renzi": 0.0007948177880220959,
+                "Luigi Di Maio": 0.0052113491603937466,
+                "Matteo Salvini": 0.001485475352112676,
+                "Laura Boldrini": 0,
+                "Giorgia Meloni": 0.00032230339492909325,
+                "Simone di Stefano": 0,
+                "Viola Carofalo": 0.003684438664932813,
+                "Emma Bonino": 0.003684438664932813,
+                "Silvio Berlusconi": 0.0002304147465437788
+            }
+        },
+        {
+            "id": "mafia",
+            "isTopic": 1,
+            "group": 1,
+            "politicians": {
+                "Matteo Renzi": 0.00031792711520883837,
+                "Luigi Di Maio": 0.0008685581933989577,
+                "Matteo Salvini": 0.002365757042253521,
+                "Laura Boldrini": 0,
+                "Giorgia Meloni": 0.0019338203695745595,
+                "Simone di Stefano": 0,
+                "Viola Carofalo": 0.00043346337234503684,
+                "Emma Bonino": 0.00043346337234503684,
+                "Silvio Berlusconi": 0
+            }
+        },
+        {
+            "id": "salute",
+            "isTopic": 1,
+            "group": 1,
+            "politicians": {
+                "Matteo Renzi": 0.000596113341016572,
+                "Luigi Di Maio": 0.0026056745801968733,
+                "Matteo Salvini": 0.0009903169014084507,
+                "Laura Boldrini": 0,
+                "Giorgia Meloni": 0,
+                "Simone di Stefano": 0,
+                "Viola Carofalo": 0,
+                "Emma Bonino": 0,
+                "Silvio Berlusconi": 0.0002304147465437788
+            }
+        },
+        {
+            "id": "ambiente",
+            "isTopic": 1,
+            "group": 1,
+            "politicians": {
+                "Matteo Renzi": 0,
+                "Luigi Di Maio": 0.00028951939779965256,
+                "Matteo Salvini": 0.0003851232394366197,
+                "Laura Boldrini": 0,
+                "Giorgia Meloni": 0,
+                "Simone di Stefano": 0,
+                "Viola Carofalo": 0.00021673168617251842,
+                "Emma Bonino": 0.00021673168617251842,
+                "Silvio Berlusconi": 0
+            }
+        },
+        {
+            "id": "famiglia",
+            "isTopic": 1,
+            "group": 1,
+            "politicians": {
+                "Matteo Renzi": 0.0014306720184397727,
+                "Luigi Di Maio": 0.0017371163867979154,
+                "Matteo Salvini": 0.00214568661971831,
+                "Laura Boldrini": 0.00511000709723208,
+                "Giorgia Meloni": 0.003975075204125484,
+                "Simone di Stefano": 0.004049168474331164,
+                "Viola Carofalo": 0.001517121803207629,
+                "Emma Bonino": 0.001517121803207629,
+                "Silvio Berlusconi": 0.0020737327188940094
+            }
+        },
+        {
+            "id": "sud",
+            "isTopic": 1,
+            "group": 1,
+            "politicians": {
+                "Matteo Renzi": 0.00031792711520883837,
+                "Luigi Di Maio": 0.0005790387955993051,
+                "Matteo Salvini": 0.0004951584507042253,
+                "Laura Boldrini": 0.00046132008516678496,
+                "Giorgia Meloni": 0.0009669101847872797,
+                "Simone di Stefano": 0,
+                "Viola Carofalo": 0.001517121803207629,
+                "Emma Bonino": 0.001517121803207629,
+                "Silvio Berlusconi": 0.0016129032258064516
+            }
+        }
+    ],
+    "links": []
+}
