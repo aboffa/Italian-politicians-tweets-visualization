@@ -7,7 +7,7 @@
   "Migrations": {
     "keywords": [
       "migra",
-      "immigra"
+      "clandestin"
     ]
   },
   "Women": {
@@ -34,8 +34,10 @@
   },
   "Tecnology": {
     "keywords": [
-      "tecnologia",
-      "web"
+      "tecnologi",
+      "web",
+      "digital",
+      "smart"
     ]
   },
   "Family": {
@@ -63,8 +65,10 @@
   "Mafia": {
     "keywords": [
       "mafia",
+      "mafioso",
       "camorra",
-      "ndrangheta"
+      "ndrangheta",
+      "malaffare"
     ]
   },
   "Seniority": {
@@ -75,25 +79,9 @@
   },
   "Work":{
     "keywords": [
-      "lavor"
+      "lavor",
+      "salario",
+      "spipendi"
     ]
-  },
-  "migra": 0,
-  "donna": 0,
-  "giovane": 0,
-  "mercato": 0,
-  "economi": 0,
-  "crescita": 0,
-  "pil": 0,
-  "debito": 0,
-  "scuola": 0,
-  "lavor": 0,
-  "web": 0,
-  "tecnologia": 0,
-  "pensione": 0,
-  "mafia": 0,
-  "salute": 0,
-  "ambiente": 0,
-  "famiglia": 0,
-  "sud": 0
+  }
 }

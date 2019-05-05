@@ -2,6 +2,19 @@ body{
     background-color:#7dc9f7 !important;
 }
 
+.allTweet{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.leftTweet{
+    float:left;
+}
+
+.rightTweet{
+    float:right;
+}
+
 .links line {
     stroke: #999;
     stroke-opacity: 0.6;
@@ -13,9 +26,8 @@ body{
 }
 
 .form-group {
-    margin-left: 20%;
-    margin-right: 20%;
-    
+    margin-left: 30%;
+    margin-right: 30%; 
 }
 
 .title {

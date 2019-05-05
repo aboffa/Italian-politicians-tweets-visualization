@@ -1,5 +1,6 @@
 allTweets/
 allWords/
+allTweetsAndWords/
 .idea/
 __pycache__/
 venv1/
