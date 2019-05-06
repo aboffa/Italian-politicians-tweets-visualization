@@ -2,43 +2,54 @@
     "Matteo Renzi": {
         "twetterName": "matteorenzi",
         "party": "PD",
-        "color": "#FFA500",
+        "color": "rgb(255, 153, 153)",
         "photo": "https://upload.wikimedia.org/wikipedia/commons/8/81/Matteo_Renzi_2015.jpeg"
     },
     "Luigi Di Maio": {
         "twetterName": "luigidimaio",
         "party": "M5S",
-        "color": "#FFFF00",
+        "color": "rgb(255, 255, 0)",
         "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Di_Maio_2018.jpg/800px-Di_Maio_2018.jpg"
     },
     "Matteo Salvini": {
         "twetterName": "matteosalvinimi",
         "party": "Lega",
-        "color": "#08C318",
-        "photo": "https:\/\/lmo.wikipedia.org\/wiki\/Matteo_Salvini#\/media\/File:Matteo_Salvini_Viminale_(cropped).jpg"
+        "color": "rgb(0, 204, 0)",
+        "photo": "https://biografieonline.it/img/bio/m/Matteo_Salvini.jpg"
     },
     "Laura Boldrini": {
         "twetterName": "lauraboldrini",
-        "party": "Liberi e Uguali"
+        "party": "Liberi e Uguali",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/6/69/Laura_Boldrini_2016.jpg",
+        "color": "rgb(255, 80, 80)"
     },
     "Giorgia Meloni": {
         "twetterName": "GiorgiaMeloni",
-        "party": "Fratelli di Italia"
+        "party": "Fratelli di Italia",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Giorgia_Meloni_2018.jpg",
+        "color": "rgb(26, 26, 255)"
     },
     "Simone di Stefano": {
         "twetterName": "distefanoTW",
-        "party": "CasaPound"
+        "party": "CasaPound",
+        "photo": "https://pbs.twimg.com/profile_images/948186806968832000/2hjKmicM_400x400.jpg",
+        "color": "#000000"
     },
     "Viola Carofalo": {
         "twetterName": "ViolaCarofalo",
-        "party": "Potere al Popolo"
+        "party": "Potere al Popolo",
+        "photo": "https://pbs.twimg.com/profile_images/1099299428895244288/2RykNdN7_400x400.png",
+        "color": "rgb(204, 51, 0)"
     },
     "Emma Bonino": {
-        "twetterName": "ViolaCarofalo",
-        "party": "+Europa"
+        "twetterName": "emmabonino",
+        "party": "+Europa",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Emma_Bonino_2017_crop.jpg/800px-Emma_Bonino_2017_crop.jpg"
     },
     "Silvio Berlusconi": {
         "twetterName": "berlusconi",
-        "party": "Forza Italia"
+        "party": "Forza Italia",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/1/10/Silvio_Berlusconi_2018.jpg",
+        "color": "rgb(51, 204, 255)"
     }
 }

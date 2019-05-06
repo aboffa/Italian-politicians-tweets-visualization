@@ -10,11 +10,12 @@ typesToConsider = ["NOM", "ADJ", "NPR"]
 
 jsonPoliticians = open('./d3/politicians.json', 'r')
 politiciansObject = json.load(jsonPoliticians)
-nTweets = 0
-nTotalWords = 0
+
 for name, politicianValue in politiciansObject.items():
     toPlot = []
     toWrite = {}
+    nTweets = 0
+    nTotalWords = 0
     toWrite["idsAndWords"] = {}
     f = open("./allTweets/" + politicianValue['twetterName'] + ".json", "r")
     tweetsObject = json.loads(f.read())

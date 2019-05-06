@@ -114,6 +114,10 @@
                 return sum;
             }
 
+            function fromSumToSize(sum){
+                return sum * 4000 + 15
+            }
+
             primaryButton.onclick = function () {
                 let firstPoliticiansSelect = document.getElementById("firstPoliticiansSelect");
                 let secondPoliticiansSelect = document.getElementById("secondPoliticiansSelect");
@@ -140,6 +144,7 @@
                     graph.nodes.push(
                         {
                             "id": fistrSelected,
+                            "color": objectPoliticians[fistrSelected]["color"],
                             "isTopic": 0,
                             "side": "left"
                         }
@@ -148,6 +153,7 @@
                     graph.nodes.push(
                         {
                             "id": secondSelected,
+                            "color": objectPoliticians[secondSelected]["color"],
                             "isTopic": 0,
                             "side": "right"
                         }
@@ -159,11 +165,19 @@
                     var simulation = d3.forceSimulation(graph.nodes)
 
                     //var center_force = d3.forceCenter(width / 2, height / 2);
-
+                    
                     simulation
                         //.force("center_force", center_force)
-                        .force("charge", d3.forceManyBody().strength(-2000))
+                        .force("charge", d3.forceManyBody().strength(-3000))
                         //.force("center", d3.forceCenter(width / 2, height / 2))
+                        .force('collision', d3.forceCollide().radius(function(d) {
+                            if (d.isTopic == 1) {
+                            return fromSumToSize(sumRatiosPolitician(d, fistrSelected, secondSelected))
+                            }
+                            else{
+                                return imageDiameter
+                            }
+                        }))
                         .force("xCenter", d3.forceX().x(width / 2).strength(function (d) {
                             if (d.isTopic == 1) {
                                 return sumRatiosPolitician(d, fistrSelected, secondSelected) * 25 + 0.2
@@ -268,20 +282,21 @@
                             //if (sum != 0) {
                             if (sum > 0) {
                                 console.log(singleNode)
-                                percentage.push({ "politic": fistrSelected, "percent": Math.round(singleNode.politicians[fistrSelected]["ratio"] / sum * 100), "color": fromNameToColor(fistrSelected) })
-                                percentage.push({ "politic": secondSelected, "percent": Math.round(singleNode.politicians[secondSelected]["ratio"] / sum * 100), "color": fromNameToColor(secondSelected) })
+                                percentage.push({ "politic": fistrSelected, "percent": Math.round(singleNode.politicians[fistrSelected]["ratio"] / sum * 100), "color": objectPoliticians[fistrSelected]["color"] })
+                                percentage.push({ "politic": secondSelected, "percent": Math.round(singleNode.politicians[secondSelected]["ratio"] / sum * 100), "color": objectPoliticians[secondSelected]["color"] })
+
                                 console.log(percentage)
                                 NodePieBuilder.drawNodePie(d3.select(this), percentage, {
-                                    parentNodeColor: color(singleNode.group),
+                                    parentNodeColor: "#FFFF00",
                                     outerStrokeWidth: 30,
-                                    radius: (sum * 5000 + 7),
+                                    radius: fromSumToSize(sum),
                                     showLabelText: true,
                                     labelText: singleNode.id,
                                     labelColor: color(singleNode.group)
                                 });
                             }
                             // Check for d3.select(this) == singleNode
-                            
+
                             var nodeEnter = d3.select(this);
                             nodeEnter.on("click", function (clickedNode) {
                                 cleanTwitterEnbeddedStuff();
@@ -330,6 +345,12 @@
                                 .attr("y", function (d) { return -imageDiameter / 2 })
                                 .attr("height", imageDiameter * 2.7)
                                 .attr("width", imageDiameter * 2.7);
+
+                            nodeEnter.append("text")
+                                .text(function(d){return (d.id)})
+                                .attr("fill", function(d){return (d.color)})
+                                .attr("dy", imageDiameter*1.5 + 20);
+
                             nodeEnter.on("click",
                                 function (clickedNode) {
                                     cleanTwitterEnbeddedStuff();

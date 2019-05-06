@@ -51,6 +51,7 @@ function drawPieChartBorder(nodeElement, options) {
 }
 
 function drawPieChart(nodeElement, percentages, options) {
+    console.log(percentages)
     var radius = getOptionOrDefault('radius', options);
     var halfRadius = radius / 2;
     var halfCircumference = 2 * Math.PI * halfRadius;
@@ -59,15 +60,18 @@ function drawPieChart(nodeElement, percentages, options) {
     for (var p in percentages) {
         percentToDraw += percentages[p].percent;
 
+        var toRotate = (180-(1.8 *  percentages[0].percent ))
         nodeElement.insert('circle', '#parent-pie + *')
             .attr("r", halfRadius)
             .attr("fill", 'transparent')
-            .style('stroke', color(percentages[p].color))
+            .style('stroke',percentages[p].color)
             .style('stroke-width', radius)
             .style('stroke-dasharray',
                 halfCircumference * percentToDraw / 100
                 + ' '
-                + halfCircumference);
+                + halfCircumference)
+            //.attr("transform","rotate("+radius+","+radius+","+toRotate+")");
+            .attr("transform","rotate("+toRotate+")");
     }
 /*
 

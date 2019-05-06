@@ -25,9 +25,14 @@ body{
     stroke-width: 0px;
 }
 
-.form-group {
+.card{
     margin-left: 30%;
     margin-right: 30%; 
+}
+
+.form-group {
+    margin-left: 5%;
+    margin-right: 5%; 
 }
 
 .title {
