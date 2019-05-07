@@ -12,6 +12,7 @@ jsonPoliticians = open('./d3/politicians.json', 'r')
 politiciansObject = json.load(jsonPoliticians)
 
 for name, politicianValue in politiciansObject.items():
+    print(name)
     toPlot = []
     toWrite = {}
     nTweets = 0
@@ -29,10 +30,12 @@ for name, politicianValue in politiciansObject.items():
         finalTwertText = ""
         for word in tweetText.split():
             if "http" not in word:
-                if word[0] == "#":
-                    finalTwertText += " " + word[1:]
-                else:
-                    finalTwertText += " " + word
+
+                if word[0] != "@" and word != "RT":
+                    if word[0] == "#":
+                        finalTwertText += " " + word[1:]
+                    else:
+                        finalTwertText += " " + word
 
         tags = tagger.tag_text(finalTwertText)
         tags2 = treetaggerwrapper.make_tags(tags)

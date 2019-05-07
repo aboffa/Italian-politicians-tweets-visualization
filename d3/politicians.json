@@ -51,5 +51,11 @@
         "party": "Forza Italia",
         "photo": "https://upload.wikimedia.org/wikipedia/commons/1/10/Silvio_Berlusconi_2018.jpg",
         "color": "rgb(51, 204, 255)"
+    },
+    "Giuseppe Civati" :{
+        "twetterName": "civati",
+        "party":"Possibile",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Giuseppe_Civati_daticamera.jpg",
+        "color" : "rgb(244, 66, 137)"
     }
 }

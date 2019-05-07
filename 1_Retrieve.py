@@ -8,19 +8,17 @@ import myUtils
 test = ["ant_boff"]
 
 fromDateTime = datetime.datetime(2018, 6, 1)
-# print(len(resultObject))
-# print(resultObject[-1]['created_at'])
-
-# print(created_date)
+jsonPoliticians = open('./d3/politicians.json', 'r')
+politiciansObject = json.load(jsonPoliticians)
 
 # With statuses/user_timeline
-for name in myUtils.tweetterNames:
+for name, politicianValue in politiciansObject.items():
     print(name)
-    exists = os.path.isfile('allTweets/' + name + ".json")
+    exists = os.path.isfile('allTweets/' + politicianValue['twetterName'] + ".json")
     if not exists:
         totalTweet = 0
         resultObjectTotal = []
-        toExecute = "twurl \"/1.1/users/show.json?screen_name=" + name + "\" "
+        toExecute = "twurl \"/1.1/users/show.json?screen_name=" + politicianValue['twetterName'] + "\" "
         print("Executing -> " + toExecute)
         result = subprocess.run(toExecute, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         if result.stderr.decode("utf8") != "\n":
@@ -31,9 +29,9 @@ for name in myUtils.tweetterNames:
             while (totalTweet < maxNumOfTweet):
                 sleep(1)
                 if totalTweet == 0:
-                    toExecute = "twurl \"/1.1/statuses/user_timeline.json?screen_name=" + name + "&count=200&include_rts=true\" "
+                    toExecute = "twurl \"/1.1/statuses/user_timeline.json?screen_name=" + politicianValue['twetterName'] + "&count=200&include_rts=true\" "
                 else:
-                    toExecute = "twurl \"/1.1/statuses/user_timeline.json?screen_name=" + name + "&count=200&include_rts=true&max_id=" + str(
+                    toExecute = "twurl \"/1.1/statuses/user_timeline.json?screen_name=" + politicianValue['twetterName'] + "&count=200&include_rts=true&max_id=" + str(
                         last_ID + 1) + "\" "
                 print("Executing -> " + toExecute)
                 result = subprocess.run(toExecute, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
@@ -51,7 +49,7 @@ for name in myUtils.tweetterNames:
                 else:
                     print(result.stderr.decode("utf8"))
                     exit(1)
-            f = open('allTweets/' + name + ".json", "w+")
+            f = open('allTweets/' + politicianValue['twetterName'] + ".json", "w+")
             f.write(json.dumps(resultObjectTotal))
             f.flush()
             f.close()
@@ -61,11 +59,11 @@ for name in myUtils.tweetterNames:
             exit(1)
     else:
         # Update with newer Tweet
-        f = open("./allTweets/" + name + ".json", "r")
+        f = open("./allTweets/" + politicianValue['twetterName'] + ".json", "r")
         tweetsObject = json.loads(f.read())
         first_ID = tweetsObject[0]['id']
         resultObjectTotal = []
-        toExecute = "twurl \"/1.1/statuses/user_timeline.json?screen_name=" + name + "&count=200&include_rts=true&since_id=" + str(
+        toExecute = "twurl \"/1.1/statuses/user_timeline.json?screen_name=" + politicianValue['twetterName'] + "&count=200&include_rts=true&since_id=" + str(
             first_ID - 1) + "\" "
         result = subprocess.run(toExecute, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
         if result.stderr.decode("utf8") != "\n":
@@ -74,7 +72,7 @@ for name in myUtils.tweetterNames:
             if len(resultObject) != 0:
                 for newtweet in resultObject:
                     tweetsObject.insert(0, newtweet)
-                f = open('allTweets/' + name + ".json", "w+")
+                f = open('allTweets/' + politicianValue['twetterName'] + ".json", "w+")
                 f.write(json.dumps(tweetsObject))
                 f.flush()
                 f.close()

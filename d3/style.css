@@ -1,11 +1,18 @@
 body{
-    background-color:#7dc9f7 !important;
+    background-color:rgb(125, 201, 247) !important;
 }
 
 .allTweet{
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 9%;
+    margin-right: 9%;
 }
+
+.jumbotron {
+    background: rgba(81, 188, 255, 0.2)  !important;
+    padding-top: 1%  !important;
+    padding-bottom: 1%  !important;
+}
+
 
 .leftTweet{
     float:left;
@@ -26,8 +33,10 @@ body{
 }
 
 .card{
-    margin-left: 30%;
-    margin-right: 30%; 
+    margin-top: 1%;
+    margin-top: 1%;
+    margin-left: 6%;
+    margin-right: 6%; 
 }
 
 .form-group {
@@ -37,8 +46,4 @@ body{
 
 .title {
     margin:2%;
-}
-
-.centered {
-    text-align: center;
 }
