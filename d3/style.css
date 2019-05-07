@@ -47,3 +47,5 @@ body{
 .title {
     margin:2%;
 }
+
+#more {display: none;}

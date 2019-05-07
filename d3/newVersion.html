@@ -3,16 +3,23 @@
 <html>
 
 <body>
-    <div class="jumbotron text-center">
-        <h1>Italian politicians tweets visualization</h1>
-
+    <div class="jumbotron text-center shadow-lg p-3">
+        <h1 onclick="location.reload()">Italian politicians tweets visualization</h1>
     </div>
-    <div class="card shadow-lg p-3">
+    <div class="card shadow-lg p-3 align-self-center">
         <div class="row text-center">
-            <div class="col-sm">
-                <p>Instructions </p>
+            <div class="col-sm my-auto">
+                <h5>Instructions </h5>
+                <p> Select two politicians from the lists, and click on GO! You will see the two selected politicians in the
+                    sides of the card below. In the middle you will see  <span
+                    id="dots">...</span><span id="more"> how much the selected politicians talk about some important topics,
+                        represented as a pie-charts. The more the two politicians talk about a topic the bigger the related pie-chart is.The nearer a pie-chart is to a politician, the more he talk about
+                        that. Move and zoom the visualization, the pie-charts and the photos of the politicians
+                        to look at them better. Just click on a politician to see his Twitter timeline. Just click on a topic to see
+                        in which tweets the two politicians talk about that. Enjoy.</span></p>
+                <button onclick="readMore()" type="button" class="btn btn-info" id="myBtn">Read more</button>
             </div>
-            <div class="col-sm">
+            <div class="col-sm my-auto">
                 <div class="form-group">
                     <label>Select the first politician</label>
                     <select class="form-control" id="firstPoliticiansSelect">
@@ -20,7 +27,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-sm">
+            <div class="col-sm my-auto">
                 <div class="form-group">
                     <label>Select the second politician</label>
                     <select class="form-control" id="secondPoliticiansSelect">
@@ -28,7 +35,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-sm">
+            <div class="col-sm my-auto">
                 <button id="primaryButton" type="button" class="btn btn-primary">Go!</button>
                 <button id="cancelButton" type="button" class="btn btn-danger">Cancel</button>
             </div>
@@ -64,8 +71,24 @@
 
     var firstColor = "rgb(0, 132, 180)"
     var secondColor = "rgb(255, 153, 0)"
-    var serverName = "http://localhost:8000"
+    //var serverName = "http://boffa.top/Italian-politicians-tweets-visualization"
+    var serverName = "http://0.0.0.0:8000"
 
+    function readMore() {
+        var dots = document.getElementById("dots");
+        var moreText = document.getElementById("more");
+        var btnText = document.getElementById("myBtn");
+
+        if (dots.style.display === "none") {
+            dots.style.display = "inline";
+            btnText.innerHTML = "Read more";
+            moreText.style.display = "none";
+        } else {
+            dots.style.display = "none";
+            btnText.innerHTML = "Read less";
+            moreText.style.display = "inline";
+        }
+    }
 
     function cleanTwitterEnbeddedTweets() {
         document.getElementById("leftTweetsPoliticianContainer").innerHTML = ""
@@ -136,7 +159,6 @@
             var primaryButton = document.getElementById("primaryButton")
             primaryButton.onclick = function () {
                 document.getElementById("card").classList.remove("d-none");
-                
                 var widthCard = document.getElementById("card").clientWidth - 30
                 console.log(document.getElementById("card").clientWidth)
                 var heightCard = window.innerHeight * 0.6
@@ -197,7 +219,7 @@
                         }))
                         .force("xCenter", d3.forceX().x(widthCard / 2).strength(function (d) {
                             if (d.isTopic == 1) {
-                                return sumRatiosPolitician(d, firstSelected, secondSelected) * 35 + 0.1
+                                return sumRatiosPolitician(d, firstSelected, secondSelected) * 35 + 0.25
                                 //return 0.6
                             }
                             else {
@@ -206,7 +228,7 @@
                         }))
                         .force("yCenter", d3.forceY().y(heightCard / 2).strength(function (d) {
                             if (d.isTopic == 1) {
-                                return sumRatiosPolitician(d, firstSelected, secondSelected) * 35 + 0.3
+                                return sumRatiosPolitician(d, firstSelected, secondSelected) * 35 + 0.45
                                 //return 0.8
                             }
                             else {
@@ -322,11 +344,9 @@
                             });*/
 
                         }
-
                         else {
                             //Not topics so photo of politician
                             var nodeEnter = d3.select(this);
-
                             nodeEnter.append("circle")
                                 .attr("r", imageRadius + 10)
                                 .attr("cx", imageRadius / 2)
@@ -339,8 +359,28 @@
                                         return objectPoliticians[secondSelected].color
                                     }
                                 })
-                            nodeEnter.append("svg:image")
 
+                            nodeEnter.append("circle")
+                                .attr("r", 50)
+                                .attr("cx", function (d) {
+                                    if (d.side == "left") {
+                                        return imageRadius*1.1
+                                    }
+                                    else {
+                                        return -imageRadius*0.1
+                                    }
+                                })
+                                .attr("cy", imageRadius/2)
+                                .attr("fill", function (d) {
+                                    if (d.side == "left") {
+                                        return firstColor
+                                    }
+                                    else {
+                                        return secondColor
+                                    }
+                                })
+
+                            nodeEnter.append("svg:image")
                                 .attr("xlink:href", function (d) {
                                     if (d.side == "left") {
                                         return objectPoliticians[firstSelected].photo;
@@ -350,22 +390,22 @@
                                     }
                                 })
                                 .attr("clip-path", "url(#clipCircle)")
-                                .attr("x", function (d) { return -imageRadius / 2 - 40 })
+                                .attr("x", function (d) { return -imageRadius / 2 - 45 })
                                 .attr("y", function (d) { return -imageRadius / 2 })
-                                .attr("height", imageRadius * 2.8)
+                                .attr("height", imageRadius * 3)
                                 .attr("width", imageRadius * 3.1)
 
                             nodeEnter.append("text")
                                 .text(function (d) { return (d.id) })
                                 .attr("fill", function (d) { return (d.color) })
-                                .attr("dy", imageRadius * 1.9 + 20);
+                                .attr("dy", imageRadius * 1.9);
 
                             nodeEnter.on("click",
                                 function (clickedNode) {
                                     cleanTwitterEnbeddedTweets();
                                     if (clickedNode.id == firstSelected) {
                                         document.getElementById("leftTweetContainer").classList.remove("d-none");
-                                        if (document.getElementById("rightProfilePoliticianContainer").innerHTML == ""){
+                                        if (document.getElementById("rightProfilePoliticianContainer").innerHTML == "") {
                                             document.getElementById("rightTweetContainer").classList.add("d-none");
                                         }
                                         document.getElementById("leftProfilePoliticianContainer").innerHTML = "Twitter timeline of " + firstSelected + ": <br>"
@@ -385,7 +425,7 @@
                                     }
                                     else {
                                         document.getElementById("rightTweetContainer").classList.remove("d-none");
-                                        if (document.getElementById("leftProfilePoliticianContainer").innerHTML == ""){
+                                        if (document.getElementById("leftProfilePoliticianContainer").innerHTML == "") {
                                             document.getElementById("leftTweetContainer").classList.add("d-none");
                                         }
                                         document.getElementById("rightProfilePoliticianContainer").innerHTML = "Twitter timeline of " + secondSelected + ": <br>"
