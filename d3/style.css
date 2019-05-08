@@ -1,5 +1,5 @@
 body{
-    background-color:rgb(125, 201, 247) !important;
+    background-color:rgb(167, 221, 255) !important;
 }
 
 .allTweet{
@@ -8,7 +8,7 @@ body{
 }
 
 .jumbotron {
-    background: rgba(81, 188, 255, 0.2)  !important;
+    background: rgba(55, 152, 212, 0.3)  !important;
     padding-top: 1%  !important;
     padding-bottom: 1%  !important;
 }
