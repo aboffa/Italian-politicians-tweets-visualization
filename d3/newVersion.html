@@ -5,7 +5,7 @@
 <body>
     <div class="jumbotron text-center shadow p-3">
         <h1 onclick="location.reload()">Italian politicians tweets visualization</h1>
-        <h5>How much Italian politicians deals with important topic such like Europe, Work, Health etc.?</h5>
+        <h5>How much Italian politicians deal with important topics such like Europe, Work, Health etc.?</h5>
     </div>
     <div class="card shadow-lg p-3 align-self-center">
         <div class="row text-center">
@@ -15,11 +15,11 @@
                     the
                     sides of the card below. In the middle you will see <span id="dots">...</span><span id="more"> how
                         much the selected politicians address some important topics,
-                        represented as a pie-charts. The more the two politicians talk about a topic the bigger the
-                        related pie-chart is.The nearer a pie-chart is to a politician, the more he talk about
+                        represented as pie-charts. The more the two politicians talk about a topic the bigger the
+                        related pie-chart is. The nearer a pie-chart is to a politician, the more he talks about
                         that. Move and zoom the visualization, the pie-charts and the photos of the politicians
                         to look at them better. Just click on a politician to see his Twitter timeline. Just click on a
-                        topic to see their most recent tweets in which they talk about that. Click <span class="text-danger">Cancel</span> to start again. Enjoy.</span></p>
+                        topic to see their most recent tweets in which they talk about that. Click <span class="text-danger">Cancel</span> to start again. Enjoy!</span></p>
                 <button onclick="readMore()" type="button" class="btn btn-info" id="myBtn">Read more</button>
             </div>
             <div class="col-sm my-auto">
@@ -46,7 +46,6 @@
     </div>
     <div id="card" class="card shadow-lg p-3 d-none">
         <svg id="svg">
-
         </svg>
     </div>
     <div id="tweetsContainers" class="allTweet">
@@ -113,7 +112,6 @@
     }
     function sumRatiosPolitician(d, name1, name2) {
         let sum = (parseFloat(d.politicians[name1]["ratio"]) + parseFloat(d.politicians[name2]["ratio"]));
-        //console.log("summing result", sum)
         return sum;
     }
 
@@ -161,16 +159,13 @@
 
             var primaryButton = document.getElementById("primaryButton")
             primaryButton.onclick = function () {
-                //chech if different 
                 var firstSelected = firstPoliticiansSelect.options[firstPoliticiansSelect.selectedIndex].text;
                 var secondSelected = secondPoliticiansSelect.options[secondPoliticiansSelect.selectedIndex].text;
-                //console.log(firstSelected + " " + secondSelected)
                 if (firstSelected != "--" && firstSelected != "--") {
                     firstPoliticiansSelect.classList.remove("is-invalid")
                     secondPoliticiansSelect.classList.remove("is-invalid")
                     document.getElementById("card").classList.remove("d-none");
                     var widthCard = document.getElementById("card").clientWidth - 30
-                    //console.log(document.getElementById("card").clientWidth)
                     var heightCard = window.innerHeight * 0.6
                     var imageRadius = fromWidthCardToImageRadius(widthCard);
                     var xOffSet = imageRadius * 1.9;
@@ -184,7 +179,6 @@
                     var svg = d3.select("svg"),
                         width = +svg.attr("width"),
                         height = +svg.attr("height");
-
 
                     d3.json(serverName + "/d3/politiciansNEW.json").then(function (graph) {
                         //set up the simulation and add forces
@@ -224,7 +218,6 @@
                             .force("xCenter", d3.forceX().x(widthCard / 2).strength(function (d) {
                                 if (d.isTopic == 1) {
                                     return sumRatiosPolitician(d, firstSelected, secondSelected) * 35 + 0.25
-                                    //return 0.6
                                 }
                                 else {
                                     return 0
@@ -233,7 +226,6 @@
                             .force("yCenter", d3.forceY().y(heightCard / 2).strength(function (d) {
                                 if (d.isTopic == 1) {
                                     return sumRatiosPolitician(d, firstSelected, secondSelected) * 35 + 0.45
-                                    //return 0.8
                                 }
                                 else {
                                     return 1
@@ -317,6 +309,9 @@
                                                 height: '700'
                                             }).then(function (el) {
                                                 console.log('Embedded a timeline.')
+                                            }).catch(function (err){
+                                                    console.log("Error in embedding tweet. ID = " + clickedNode.politicians[firstSelected]["tweet_ids"][i])
+                                                    console.log(err)
                                             });
                                         twttr.widgets.createTweet(
                                             clickedNode.politicians[secondSelected]["tweet_ids"][i],
@@ -326,9 +321,13 @@
                                                 height: '700'
                                             }).then(function (el) {
                                                 console.log('Embedded a timeline.')
+                                            }).catch(function (err){
+                                                console.log("Error in embedding tweet. ID = " + clickedNode.politicians[secondSelected]["tweet_ids"][i])
+                                                    console.log(err)
                                             });
                                     }
                                 })
+                                //Possible interactions
                                 /*nodeEnter.on('mouseenter', function (d) {
                                     // select element in current context
                                     console.log(d)
@@ -422,6 +421,9 @@
                                                     height: '700'
                                                 }).then(function (el) {
                                                     console.log('Embedded a timeline.')
+                                                }).catch(function (err){
+                                                    console.log("Error in embedding timeline of " + firstSelected)
+                                                    console.log(err)
                                                 });
                                         }
                                         else {
@@ -441,6 +443,9 @@
                                                     height: '700'
                                                 }).then(function (el) {
                                                     console.log('Embedded a timeline.')
+                                                }).catch(function (err){
+                                                    console.log("Error in embedding timeline of "+ secondSelected)
+                                                    console.log(err)
                                                 });
                                         }
                                     }
@@ -448,7 +453,6 @@
                             }
                         });
 
-                        //console.log(node);
                         //add drag capabilities
                         var drag_handler = d3.drag()
                             .on("start", drag_start)
@@ -539,6 +543,5 @@
             }
 
         });
-
 
 </script>

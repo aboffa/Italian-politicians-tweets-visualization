@@ -44,7 +44,8 @@
     "Emma Bonino": {
         "twetterName": "emmabonino",
         "party": "+Europa",
-        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Emma_Bonino_2017_crop.jpg/800px-Emma_Bonino_2017_crop.jpg"
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Emma_Bonino_2017_crop.jpg/800px-Emma_Bonino_2017_crop.jpg",
+        "color": "rgb(0, 255, 204)"
     },
     "Silvio Berlusconi": {
         "twetterName": "berlusconi",
