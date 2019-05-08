@@ -71,8 +71,8 @@
 
     var firstColor = "rgb(0, 132, 180)"
     var secondColor = "rgb(255, 153, 0)"
-    //var serverName = "http://boffa.top/Italian-politicians-tweets-visualization"
-    var serverName = "http://0.0.0.0:8000"
+    var serverName = "http://boffa.top/Italian-politicians-tweets-visualization"
+    //var serverName = "http://0.0.0.0:8000"
 
     function readMore() {
         var dots = document.getElementById("dots");
@@ -160,7 +160,7 @@
             primaryButton.onclick = function () {
                 document.getElementById("card").classList.remove("d-none");
                 var widthCard = document.getElementById("card").clientWidth - 30
-                console.log(document.getElementById("card").clientWidth)
+                //console.log(document.getElementById("card").clientWidth)
                 var heightCard = window.innerHeight * 0.6
                 var imageRadius = fromWidthCardToImageRadius(widthCard);
                 var xOffSet = imageRadius * 1.9;
@@ -172,7 +172,7 @@
                 //chech if different 
                 var firstSelected = firstPoliticiansSelect.options[firstPoliticiansSelect.selectedIndex].text;
                 var secondSelected = secondPoliticiansSelect.options[secondPoliticiansSelect.selectedIndex].text;
-                console.log(firstSelected + " " + secondSelected)
+                //console.log(firstSelected + " " + secondSelected)
 
                 var svg = document.getElementById('svg');
                 svg.setAttribute("width", widthCard)
@@ -216,7 +216,9 @@
                             else {
                                 return imageRadius
                             }
-                        }))
+                        })
+                            .strength(1)
+                            .iterations(3))
                         .force("xCenter", d3.forceX().x(widthCard / 2).strength(function (d) {
                             if (d.isTopic == 1) {
                                 return sumRatiosPolitician(d, firstSelected, secondSelected) * 35 + 0.25
@@ -361,7 +363,7 @@
                                 })
 
                             nodeEnter.append("circle")
-                                .attr("r", 50)
+                                .attr("r", imageRadius/1.5)
                                 .attr("cx", function (d) {
                                     if (d.side == "left") {
                                         return imageRadius*1.1
@@ -489,7 +491,6 @@
                     //Zoom functions
                     function zoom_actions() {
                         //Zoom limits
-                        console.log(d3.event.transform)
                         if (d3.event.transform.k < 1.5) {
                             if (d3.event.transform.k > 0.5) {
                                 g.attr("transform", d3.event.transform)
