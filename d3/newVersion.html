@@ -3,8 +3,9 @@
 <html>
 
 <body>
-    <div class="jumbotron text-center shadow-lg p-3">
+    <div class="jumbotron text-center shadow p-3">
         <h1 onclick="location.reload()">Italian politicians tweets visualization</h1>
+        <h5>How much Italian politicians deals with important topic such like Europe, Work, Health etc.?</h5>
     </div>
     <div class="card shadow-lg p-3 align-self-center">
         <div class="row text-center">
@@ -72,7 +73,7 @@
     var firstColor = "rgb(0, 132, 180)"
     var secondColor = "rgb(255, 153, 0)"
     //var serverName = "http://boffa.top/Italian-politicians-tweets-visualization"
-    var serverName = "http://0.0.0.0:8000"
+    var serverName = "http://localhost:8000"
 
     function readMore() {
         var dots = document.getElementById("dots");
@@ -310,8 +311,7 @@
                                         document.getElementById("leftTweetsPoliticianContainer"),
                                         {
                                             width: widthCard * 0.3,
-                                            height: '700',
-                                            related: 'twitterdev,twitterapi'
+                                            height: '700'
                                         }).then(function (el) {
                                             console.log('Embedded a timeline.')
                                         });
@@ -320,8 +320,7 @@
                                         document.getElementById("rightTweetsPoliticianContainer"),
                                         {
                                             width: widthCard * 0.3,
-                                            height: '700',
-                                            related: 'twitterdev,twitterapi'
+                                            height: '700'
                                         }).then(function (el) {
                                             console.log('Embedded a timeline.')
                                         });
@@ -417,8 +416,7 @@
                                             document.getElementById("leftProfilePoliticianContainer"),
                                             {
                                                 width: widthCard * 0.3,
-                                                height: '700',
-                                                related: 'twitterdev,twitterapi'
+                                                height: '700'
                                             }).then(function (el) {
                                                 console.log('Embedded a timeline.')
                                             });
@@ -437,8 +435,7 @@
                                             document.getElementById("rightProfilePoliticianContainer"),
                                             {
                                                 width: widthCard * 0.3,
-                                                height: '700',
-                                                related: 'twitterdev,twitterapi'
+                                                height: '700'
                                             }).then(function (el) {
                                                 console.log('Embedded a timeline.')
                                             });
