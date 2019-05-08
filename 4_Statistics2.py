@@ -1,13 +1,5 @@
 import json
-import myUtils
 
-from nltk.probability import FreqDist
-
-fwrite = open("first_statistics.csv", "w+")
-fwrite.write("names")
-for topic in myUtils.topics.keys():
-    fwrite.write(" , " + topic)
-fwrite.write("\n")
 forForceGraph = {}
 forForceGraph["nodes"] = []
 forForceGraph["links"] = []

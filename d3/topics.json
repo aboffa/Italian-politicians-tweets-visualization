@@ -7,7 +7,8 @@
   "Migrations": {
     "keywords": [
       "migra",
-      "clandestin"
+      "clandestin",
+      "soggiorno"
     ]
   },
   "Women": {
@@ -18,10 +19,10 @@
   },
   "Culture": {
     "keywords": [
-      "giovane",
       "scuola",
       "università",
-      "cultura"
+      "cultura",
+      "museo"
     ]
   },
   "Economics": {
@@ -90,12 +91,21 @@
     "keywords": [
       "lgbt",
       "gay",
-      "omosessual"
+      "omosessual",
+      "gender"
     ]
   },
-  "Industry" : {
-  "keywords": [
-    "industri"
-  ]
+  "Industry": {
+    "keywords": [
+      "industri"
+    ]
+  },
+  "Enviroment": {
+    "keywords": [
+      "ambient",
+      "inquinamento",
+      "ecosostenibile",
+      "climatico"
+    ]
   }
 }
