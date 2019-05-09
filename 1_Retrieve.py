@@ -25,7 +25,7 @@ for name, politicianValue in politiciansObject.items():
             resultText = result.stdout.decode("utf8")
             resultObject = json.loads(resultText)
             maxNumOfTweet = min(3200, resultObject['statuses_count'])
-            print(maxNumOfTweet)
+            print("Max Number of tweets:" + maxNumOfTweet)
             while (totalTweet < maxNumOfTweet):
                 sleep(1)
                 if totalTweet == 0:
@@ -44,8 +44,8 @@ for name, politicianValue in politiciansObject.items():
                     last_ID = resultObject[-1]['id']
                     created_date = datetime.datetime.strptime(resultObject[-1]['created_at'],
                                                               '%a %b %d %H:%M:%S +0000 %Y')
-                    if created_date < fromDateTime:
-                        break;
+                    #if created_date < fromDateTime:
+                    #    break;
                 else:
                     print(result.stderr.decode("utf8"))
                     exit(1)

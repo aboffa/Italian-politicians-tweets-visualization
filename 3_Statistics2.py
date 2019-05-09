@@ -34,7 +34,7 @@ for topic, topicValue in topicsObject.items():
             # Check if useful
         print(ratio)
         politicians[name] = {}
-        if (ratio < 0.00001):
+        if (ratio < 0.000001):
             politicians[name]["ratio"] = 0
             politicians[name]["tweet_ids"] = []
         else:
@@ -43,6 +43,6 @@ for topic, topicValue in topicsObject.items():
     forForceGraph["nodes"].append({"id": topic, "isTopic": 1, "group": 1, "politicians": politicians})
 
 print(forForceGraph)
-fGraph = open("d3/politiciansNEW.json", "w+")
+fGraph = open("d3/TopicRatiosForPoliticians.json", "w+")
 fGraph.write(json.dumps(forForceGraph))
 fGraph.close()
