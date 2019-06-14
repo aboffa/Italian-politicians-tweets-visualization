@@ -1,10 +1,9 @@
-
 document.getElementById("cancelButton").disabled = true;
 
 var firstColor = "rgb(0, 132, 180)"
 var secondColor = "rgb(255, 153, 0)"
-//var serverName = "http://boffa.top/Italian-politicians-tweets-visualization"
-var serverName = "http://0.0.0.0:8000"
+var serverName = "http://boffa.top/Italian-politicians-tweets-visualization"
+//var serverName = "http://0.0.0.0:8000"
 
 function readMore() {
     var dots = document.getElementById("dots");
